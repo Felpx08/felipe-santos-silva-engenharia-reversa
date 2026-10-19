@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>documentacao</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="engenharia-reversa-sistema-oficina-autocerta">Engenharia Reversa
+– Sistema Oficina AutoCerta</h1>
+<p><strong>Aluno:</strong> [Seu Nome]<br />
+<strong>Data:</strong> Outubro 2026<br />
+<strong>Repositório:</strong> nome-sobrenome-engenharia-reversa</p>
+<hr />
+<h2 id="requisitos-funcionais-e-regras-de-negócio">1. Requisitos
+Funcionais e Regras de Negócio</h2>
+<h3 id="requisitos-funcionais-rf">Requisitos Funcionais (RF)</h3>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 42%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Requisito</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RF01</td>
+<td>Autenticação de usuários</td>
+<td>O sistema deve permitir login com usuário e senha. Sessão expira em
+30 minutos.</td>
+</tr>
+<tr class="even">
+<td>RF02</td>
+<td>Logout</td>
+<td>O usuário pode encerrar a sessão a qualquer momento.</td>
+</tr>
+<tr class="odd">
+<td>RF03</td>
+<td>Identificar usuário logado</td>
+<td>Exibir o nome do usuário autenticado em todas as páginas
+internas.</td>
+</tr>
+<tr class="even">
+<td>RF04</td>
+<td>Listar clientes</td>
+<td>Listar todos os clientes ordenados por nome, com opção de busca por
+nome, e-mail, telefone ou CPF.</td>
+</tr>
+<tr class="odd">
+<td>RF05</td>
+<td>Cadastrar cliente</td>
+<td>Permitir cadastro de novo cliente com nome (obrigatório), CPF (11
+dígitos, único), telefone e e-mail (opcional, validado).</td>
+</tr>
+<tr class="even">
+<td>RF06</td>
+<td>Editar cliente</td>
+<td>Permitir alteração dos dados de um cliente existente, mantendo a
+unicidade do CPF.</td>
+</tr>
+<tr class="odd">
+<td>RF07</td>
+<td>Listar veículos</td>
+<td>Listar veículos com placa, modelo, tipo, marca e nome do cliente
+proprietário, ordenados por modelo.</td>
+</tr>
+<tr class="even">
+<td>RF08</td>
+<td>Cadastrar veículo</td>
+<td>Cadastrar veículo associado a um cliente existente. Placa deve ser
+válida (padrão antigo ou Mercosul) e única.</td>
+</tr>
+<tr class="odd">
+<td>RF09</td>
+<td>Listar agendamentos</td>
+<td>Listar agendamentos com dados do veículo e do cliente, ordenados por
+mês e data, agrupados visualmente por mês.</td>
+</tr>
+<tr class="even">
+<td>RF10</td>
+<td>Cadastrar agendamento</td>
+<td>Criar agendamento informando veículo, data válida (AAAA-MM-DD) e
+serviço.</td>
+</tr>
+<tr class="odd">
+<td>RF11</td>
+<td>Alterar data de agendamento</td>
+<td>Permitir alteração apenas da data de um agendamento existente.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regras-de-negócio-rn">Regras de Negócio (RN)</h3>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 21%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Regra</th>
+<th>Evidência no código</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RN01</td>
+<td>CPF deve ter exatamente 11 dígitos numéricos</td>
+<td><code>validarCliente()</code> em server.js</td>
+</tr>
+<tr class="even">
+<td>RN02</td>
+<td>CPF deve ser único entre os clientes</td>
+<td>Busca após descriptografar todos os CPFs</td>
+</tr>
+<tr class="odd">
+<td>RN03</td>
+<td>E-mail, se informado, deve ter formato válido</td>
+<td>Regex <code>/^\S+@\S+\.\S+$/</code></td>
+</tr>
+<tr class="even">
+<td>RN04</td>
+<td>Placa deve seguir padrão <code>[A-Z]{3}\d[A-Z0-9]\d{2}</code>
+(antiga ou Mercosul)</td>
+<td>Constante <code>PLACA_VALIDA</code></td>
+</tr>
+<tr class="odd">
+<td>RN05</td>
+<td>Placa deve ser única</td>
+<td>Verificação antes do INSERT</td>
+</tr>
+<tr class="even">
+<td>RN06</td>
+<td>Todo veículo deve pertencer a um cliente existente</td>
+<td>FK + validação no POST</td>
+</tr>
+<tr class="odd">
+<td>RN07</td>
+<td>Data de agendamento deve ser válida no formato AAAA-MM-DD</td>
+<td>Função <code>dataValida()</code></td>
+</tr>
+<tr class="even">
+<td>RN08</td>
+<td>Serviço de agendamento é obrigatório</td>
+<td>Validação no POST</td>
+</tr>
+<tr class="odd">
+<td>RN09</td>
+<td>Sessão expira após 30 minutos de inatividade</td>
+<td><code>MINUTOS_SESSAO = 30</code> + cookie maxAge</td>
+</tr>
+<tr class="even">
+<td>RN10</td>
+<td>Todas as rotas de API (exceto login) exigem autenticação</td>
+<td>Middleware <code>exigirLogin</code></td>
+</tr>
+<tr class="odd">
+<td>RN11</td>
+<td>CPF é armazenado criptografado (AES-256-GCM) e nunca em texto
+claro</td>
+<td><code>seguranca.js</code> + <code>clienteJson</code></td>
+</tr>
+<tr class="even">
+<td>RN12</td>
+<td>Senha é armazenada com hash bcrypt (não reversível)</td>
+<td><code>bcrypt.compareSync</code> no login</td>
+</tr>
+<tr class="odd">
+<td>RN13</td>
+<td>Busca de clientes por CPF é feita em memória (após
+descriptografia)</td>
+<td>Comentário no GET /api/clientes</td>
+</tr>
+<tr class="even">
+<td>RN14</td>
+<td>Listagem de agendamentos ordenada por mês/ano e data</td>
+<td><code>ORDER BY strftime('%Y-%m', ...)</code>, agrupamento visual no
+front</td>
+</tr>
+<tr class="odd">
+<td>RN15</td>
+<td>Não é possível cadastrar veículo sem selecionar cliente</td>
+<td>Validação de <code>cliente_id</code> no back e select obrigatório no
+front</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="der-diagrama-entidade-relacionamento">2. DER – Diagrama
+Entidade-Relacionamento</h2>
+<pre><code>┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
+│    usuarios     │       │    clientes     │       │    veiculos     │
+├─────────────────┤       ├─────────────────┤       ├─────────────────┤
+│ id (PK) INTEGER │       │ id (PK) INTEGER │       │ id (PK) INTEGER │
+│ nome TEXT NN    │       │ nome TEXT NN    │       │ placa TEXT NN U │
+│ login TEXT NN U │       │ cpf TEXT NN     │◄──┐   │ modelo TEXT NN  │
+│ senha TEXT NN   │       │ telefone TEXT   │   │   │ tipo TEXT NN    │
+└─────────────────┘       │ email TEXT      │   │   │ marca TEXT      │
+                          └─────────────────┘   │   │ cliente_id (FK) │
+                                                │   └────────┬────────┘
+                                                │            │
+                                                │            │ 1:N
+                                                │            │
+                                                │   ┌────────▼────────┐
+                                                │   │  agendamentos   │
+                                                │   ├─────────────────┤
+                                                └───┤ id (PK) INTEGER │
+                                                    │ veiculo_id (FK) │
+                                                    │ data_agendamento│
+                                                    │ servico TEXT NN │
+                                                    └─────────────────┘</code></pre>
+<p><strong>Cardinalidades:</strong> - 1 Cliente → N Veículos - 1 Veículo
+→ N Agendamentos - Usuários é tabela isolada (apenas autenticação)</p>
+<p><strong>Observações:</strong> - <code>cpf</code> é armazenado
+criptografado (AES-256-GCM), por isso não há UNIQUE no banco. -
+<code>senha</code> é hash bcrypt. - Foreign keys com
+<code>PRAGMA foreign_keys = ON</code>.</p>
+<p>(Ver <code>docs/der.png</code> para versão gráfica.)</p>
+<hr />
+<h2 id="mapa-da-api">3. Mapa da API</h2>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 12%" />
+<col style="width: 18%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Método</th>
+<th>Rota</th>
+<th>Entrada</th>
+<th>Saída</th>
+<th>Validações</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>POST</td>
+<td>/api/login</td>
+<td><code>{login, senha}</code></td>
+<td><code>{ok:true}</code></td>
+<td>login e senha obrigatórios; credenciais válidas</td>
+<td>200 / 400 / 401</td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td>/api/logout</td>
+<td>—</td>
+<td><code>{ok:true}</code></td>
+<td>—</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>GET</td>
+<td>/api/me</td>
+<td>— (sessão)</td>
+<td><code>{id, nome}</code></td>
+<td>Sessão válida</td>
+<td>200 / 401</td>
+</tr>
+<tr class="even">
+<td>GET</td>
+<td>/api/clientes</td>
+<td><code>?busca=</code> (opcional)</td>
+<td>Array de clientes (CPF descriptografado)</td>
+<td>Sessão</td>
+<td>200 / 401</td>
+</tr>
+<tr class="odd">
+<td>POST</td>
+<td>/api/clientes</td>
+<td><code>{nome, cpf, telefone?, email?}</code></td>
+<td><code>{ok:true}</code></td>
+<td>nome obrigatório, CPF 11 dígitos e único, e-mail formato</td>
+<td>201 / 400 / 401</td>
+</tr>
+<tr class="even">
+<td>PUT</td>
+<td>/api/clientes/:id</td>
+<td><code>{nome, cpf, telefone?, email?}</code></td>
+<td><code>{ok:true}</code></td>
+<td>id existe, mesmas regras de POST (exceto CPF próprio)</td>
+<td>200 / 400 / 404 / 401</td>
+</tr>
+<tr class="odd">
+<td>GET</td>
+<td>/api/veiculos</td>
+<td>—</td>
+<td>Array de veículos + cliente_nome</td>
+<td>Sessão</td>
+<td>200 / 401</td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td>/api/veiculos</td>
+<td><code>{placa, modelo, tipo, marca?, cliente_id}</code></td>
+<td><code>{ok:true}</code></td>
+<td>placa válida e única, modelo/tipo obrigatórios, cliente existe</td>
+<td>201 / 400 / 401</td>
+</tr>
+<tr class="odd">
+<td>GET</td>
+<td>/api/agendamentos</td>
+<td>—</td>
+<td>Array com joins (veículo + cliente)</td>
+<td>Sessão</td>
+<td>200 / 401</td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td>/api/agendamentos</td>
+<td><code>{veiculo_id, data_agendamento, servico}</code></td>
+<td><code>{ok:true}</code></td>
+<td>veículo existe, data válida, serviço obrigatório</td>
+<td>201 / 400 / 401</td>
+</tr>
+<tr class="odd">
+<td>PUT</td>
+<td>/api/agendamentos/:id</td>
+<td><code>{data_agendamento}</code></td>
+<td><code>{ok:true}</code></td>
+<td>id existe, data válida</td>
+<td>200 / 400 / 404 / 401</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Middleware comum:</strong> <code>exigirLogin</code> retorna
+401 com mensagem “Sessão expirada…” se não houver
+<code>req.session.usuario</code>.</p>
+<hr />
+<h2 id="mapa-do-front-end">4. Mapa do Front-end</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 17%" />
+<col style="width: 31%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Página</th>
+<th>Scripts</th>
+<th>Rotas chamadas</th>
+<th>Ações do usuário</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>login.html</td>
+<td>comum.js, login.js</td>
+<td>POST /api/login</td>
+<td>Submit do formulário → redireciona para principal.html ou mostra
+erro. Trata <code>?expirou=1</code>.</td>
+</tr>
+<tr class="even">
+<td>principal.html</td>
+<td>comum.js</td>
+<td>GET /api/me, POST /api/logout</td>
+<td>Exibe nome do usuário. Botão Sair. Links para as outras
+páginas.</td>
+</tr>
+<tr class="odd">
+<td>clientes.html</td>
+<td>comum.js, clientes.js</td>
+<td>GET /api/clientes?busca=, POST /api/clientes, PUT
+/api/clientes/:id</td>
+<td>Buscar (botão/Enter), Novo, Editar (modal), Salvar.</td>
+</tr>
+<tr class="even">
+<td>veiculos.html</td>
+<td>comum.js, veiculos.js</td>
+<td>GET /api/veiculos, GET /api/clientes, POST /api/veiculos</td>
+<td>Listar, Novo (carrega select de clientes), Salvar.</td>
+</tr>
+<tr class="odd">
+<td>agendamentos.html</td>
+<td>comum.js, agendamentos.js</td>
+<td>GET /api/agendamentos, GET /api/veiculos, POST /api/agendamentos,
+PUT /api/agendamentos/:id</td>
+<td>Listar (agrupado por mês), Novo, Alterar data (modal).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Funções compartilhadas (comum.js):</strong> -
+<code>api()</code>: fetch + tratamento de 401 (redireciona para login) -
+<code>esc()</code>: escape HTML (prevenção XSS) -
+<code>formatarCpf()</code>, <code>formatarData()</code>,
+<code>nomeMes()</code> - <code>iniciarPagina()</code>: carrega usuário e
+configura logout - <code>avisar()</code>, <code>abrirModal()</code>,
+<code>fecharModal()</code></p>
+<hr />
+<h2 id="análise-de-segurança">5. Análise de Segurança</h2>
+<h3 id="como-funciona">Como funciona</h3>
+<ol type="1">
+<li><strong>Autenticação / Sessão</strong>
+<ul>
+<li><code>express-session</code> com secret fixo
+<code>'oficina-autocerta-sessao'</code>.<br />
+</li>
+<li>Cookie <code>httpOnly: true</code>,
+<code>maxAge: 30 * 60 * 1000</code> (30 min).<br />
+</li>
+<li>Após login bem-sucedido:
+<code>req.session.usuario = {id, nome}</code>.<br />
+</li>
+<li>Middleware <code>exigirLogin</code> protege todas as rotas de API
+(exceto login).<br />
+</li>
+<li>Front-end: se receber 401, redireciona para
+<code>/login.html?expirou=1</code>.</li>
+</ul></li>
+<li><strong>Hash de senha</strong>
+<ul>
+<li>bcryptjs com salt embutido (<code>$2b$08$...</code>).<br />
+</li>
+<li>Comparação com
+<code>bcrypt.compareSync(senha, usuario.senha)</code>.<br />
+</li>
+<li>Hash é unidirecional: não é possível recuperar a senha
+original.</li>
+</ul></li>
+<li><strong>Criptografia do CPF</strong>
+<ul>
+<li>AES-256-GCM (autenticado) em <code>seguranca.js</code>.<br />
+</li>
+<li>Chave derivada com <code>scrypt</code> a partir de string secreta +
+salt.<br />
+</li>
+<li>Formato armazenado: <code>iv:tag:ciphertext</code> (base64).<br />
+</li>
+<li>Descriptografia só ocorre na aplicação (nunca no SQL).<br />
+</li>
+<li>Por isso a busca por CPF é feita em memória após
+<code>descriptografar</code>.</li>
+</ul></li>
+</ol>
+<h3 id="melhorias-recomendadas">3 melhorias recomendadas</h3>
+<ol type="1">
+<li><p><strong>Secret e chave em variáveis de ambiente</strong><br />
+O secret da sessão e a chave de criptografia do CPF estão hardcoded. Em
+produção devem vir de <code>process.env</code> e ser gerados com alta
+entropia.</p></li>
+<li><p><strong>Cookie <code>secure: true</code> e
+SameSite</strong><br />
+Em HTTPS, adicionar <code>secure: true</code> e
+<code>sameSite: 'strict'</code> para mitigar CSRF e
+interceptação.</p></li>
+<li><p><strong>Validação completa de CPF (dígitos
+verificadores)</strong><br />
+Atualmente só verifica 11 dígitos. Implementar o algoritmo oficial dos
+dígitos verificadores evita CPFs inválidos.</p></li>
+</ol>
+<p><strong>Extras:</strong> rate-limit no login, logs de autenticação, e
+não expor mensagens que diferenciem “usuário inexistente” de “senha
+errada” (já está ok).</p>
+<hr />
+<h2 id="casos-de-teste-mínimo-15">6. Casos de Teste (mínimo 15)</h2>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 16%" />
+<col style="width: 21%" />
+<col style="width: 30%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Requisito</th>
+<th>Procedimento</th>
+<th>Resultado Esperado</th>
+<th>Resultado Real</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CT01</td>
+<td>RF01</td>
+<td>POST /api/login com admin/admin123</td>
+<td>200 {ok:true} + cookie de sessão</td>
+<td>OK – login realizado</td>
+</tr>
+<tr class="even">
+<td>CT02</td>
+<td>RF01</td>
+<td>POST /api/login com senha errada</td>
+<td>401 “Usuário ou senha inválidos.”</td>
+<td>OK – 401</td>
+</tr>
+<tr class="odd">
+<td>CT03</td>
+<td>RF01</td>
+<td>POST /api/login sem campos</td>
+<td>400 “Informe usuário e senha.”</td>
+<td>OK – 400</td>
+</tr>
+<tr class="even">
+<td>CT04</td>
+<td>RF03</td>
+<td>GET /api/me com sessão válida</td>
+<td>200 {id, nome}</td>
+<td>OK</td>
+</tr>
+<tr class="odd">
+<td>CT05</td>
+<td>RF03</td>
+<td>GET /api/me sem sessão</td>
+<td>401 “Sessão expirada…”</td>
+<td>OK</td>
+</tr>
+<tr class="even">
+<td>CT06</td>
+<td>RF05</td>
+<td>POST /api/clientes nome + CPF 11 dígitos</td>
+<td>201 {ok:true}</td>
+<td>OK – cliente criado</td>
+</tr>
+<tr class="odd">
+<td>CT07</td>
+<td>RF05</td>
+<td>POST /api/clientes CPF já existente</td>
+<td>400 “Já existe um cliente com este CPF.”</td>
+<td>OK</td>
+</tr>
+<tr class="even">
+<td>CT08</td>
+<td>RF05</td>
+<td>POST /api/clientes CPF com 10 dígitos</td>
+<td>400 “O CPF deve ter 11 dígitos.”</td>
+<td>OK</td>
+</tr>
+<tr class="odd">
+<td>CT09</td>
+<td>RF05</td>
+<td>POST /api/clientes e-mail inválido</td>
+<td>400 “E-mail inválido.”</td>
+<td>OK</td>
+</tr>
+<tr class="even">
+<td>CT10</td>
+<td>RF08</td>
+<td>POST /api/veiculos placa válida + cliente_id</td>
+<td>201 {ok:true}</td>
+<td>OK</td>
+</tr>
+<tr class="odd">
+<td>CT11</td>
+<td>RF08</td>
+<td>POST /api/veiculos placa inválida (ABC123)</td>
+<td>400 “Informe uma placa válida.”</td>
+<td>OK</td>
+</tr>
+<tr class="even">
+<td>CT12</td>
+<td>RF08</td>
+<td>POST /api/veiculos sem cliente_id</td>
+<td>400 “Selecione o cliente do veículo.”</td>
+<td>OK</td>
+</tr>
+<tr class="odd">
+<td>CT13</td>
+<td>RF08</td>
+<td>POST /api/veiculos placa duplicada</td>
+<td>400 “Já existe um veículo com esta placa.”</td>
+<td>OK</td>
+</tr>
+<tr class="even">
+<td>CT14</td>
+<td>RF10</td>
+<td>POST /api/agendamentos data válida</td>
+<td>201 {ok:true}</td>
+<td>OK</td>
+</tr>
+<tr class="odd">
+<td>CT15</td>
+<td>RF10</td>
+<td>POST /api/agendamentos data inválida (2026-13-01)</td>
+<td>400 “Informe uma data válida.”</td>
+<td>OK</td>
+</tr>
+<tr class="even">
+<td>CT16</td>
+<td>RF11</td>
+<td>PUT /api/agendamentos/1 com data válida</td>
+<td>200 {ok:true}</td>
+<td>OK</td>
+</tr>
+<tr class="odd">
+<td>CT17</td>
+<td>RN09</td>
+<td>Aguardar &gt;30 min e chamar API</td>
+<td>401 e redirecionamento no front</td>
+<td>OK (simulado alterando maxAge)</td>
+</tr>
+<tr class="even">
+<td>CT18</td>
+<td>XSS</td>
+<td>Inserir nome com <code>&lt;script&gt;</code> e listar</td>
+<td>Texto escapado por <code>esc()</code></td>
+<td>OK – HTML seguro</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observação:</strong> Os testes de API foram executados via
+<code>curl</code> e scripts Node após subir o servidor. Evidências em
+<code>docs/evidencias/</code>.</p>
+<hr />
+<h2 id="diagrama-de-fluxo-cadastro-de-veículo">7. Diagrama de Fluxo –
+Cadastro de Veículo</h2>
+<pre><code>[Usuário clica “+ Novo” em veiculos.html]
+          │
+          ▼
+[veiculos.js] → api(&#39;/api/clientes&#39;)  ──►  [server.js GET /api/clientes]
+          │                                         │
+          │◄── lista de clientes ───────────────────┘
+          ▼
+[Preenche formulário (placa, modelo, tipo, marca, cliente)]
+          │
+          ▼
+[Submit] → api POST /api/veiculos {placa, modelo, tipo, marca, cliente_id}
+          │
+          ▼
+[server.js]
+  1. exigirLogin (sessão?)
+  2. Normaliza placa (remove espaços, upper)
+  3. Valida regex PLACA_VALIDA
+  4. Valida modelo, tipo, cliente_id
+  5. Verifica se cliente existe no banco
+  6. Verifica se placa já existe
+  7. INSERT INTO veiculos ...
+  8. res.status(201).json({ok:true})
+          │
+          ▼
+[Front] fecha modal, avisar(“Veículo cadastrado.”), carregar() novamente</code></pre>
+<hr />
+<h2 id="código-comentado">8. Código Comentado</h2>
+<p>O código-fonte comentado encontra-se na pasta
+<code>sistema_comentado/</code>.<br />
+Os comentários explicam <strong>o porquê</strong> de cada decisão
+(validações, criptografia, ordenação, escape XSS, etc.).</p>
+<p>Principais arquivos comentados: - <code>server.js</code> – todas as
+rotas e regras de validação - <code>seguranca.js</code> – AES-256-GCM e
+por que é usado no CPF - <code>db/conexao.js</code> – criação automática
+do banco - <code>public/js/comum.js</code> – tratamento de sessão
+expirada e prevenção XSS - Demais arquivos JS e HTML</p>
+<hr />
+<h2 id="estrutura-do-repositório">Estrutura do Repositório</h2>
+<pre><code>nome-sobrenome-engenharia-reversa/
+├── README.md
+├── .gitignore
+├── docs/
+│   ├── documentacao.pdf
+│   ├── der.png
+│   └── evidencias/
+│       ├── ct01-login-sucesso.png
+│       ├── ...
+│       └── testes-api.txt
+└── sistema_comentado/
+    ├── server.js          (comentado)
+    ├── seguranca.js       (comentado)
+    ├── ...</code></pre>
+<hr />
+<p><em>Documento gerado a partir da engenharia reversa do sistema
+fornecido. Todas as afirmações são comprovadas pelo código-fonte ou por
+testes executados.</em></p>
+</body>
+</html>

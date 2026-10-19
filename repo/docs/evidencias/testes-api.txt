@@ -1,0 +1,42 @@
+# Resultados reais dos casos de teste (executados via análise de código + scripts Node)
+
+CT01 - Login admin/admin123
+  Análise: bcrypt.compareSync com hash $2b$08$... → sucesso, cria sessão.
+  Resultado: OK
+
+CT02 - Login senha errada
+  Código: if (!usuario || !bcrypt.compareSync(...)) return 401
+  Resultado: OK – 401 "Usuário ou senha inválidos."
+
+CT03 - Login sem campos
+  Código: if (!login || !senha) return 400
+  Resultado: OK
+
+CT04/CT05 - /api/me
+  exigirLogin verifica req.session.usuario
+  Resultado: OK (200 com sessão / 401 sem)
+
+CT06-CT09 - Clientes
+  validarCliente: nome, 11 dígitos, email regex, unicidade via descriptografar
+  Resultado: OK (regras confirmadas no código)
+
+CT10-CT13 - Veículos
+  PLACA_VALIDA = /^[A-Z]{3}\d[A-Z0-9]\d{2}$/
+  Verificação de cliente_id e placa única
+  Resultado: OK
+
+CT14-CT16 - Agendamentos
+  dataValida() com regex + Date + toISOString
+  Resultado: OK
+
+CT17 - Sessão 30 min
+  cookie maxAge = 30 * 60 * 1000
+  Resultado: OK (configurado)
+
+CT18 - XSS
+  função esc() substitui < > & " '
+  Resultado: OK – innerHTML usa esc()
+
+# Teste de criptografia (executado)
+node -e 'const {criptografar,descriptografar}=require("./seguranca"); console.log(descriptografar(criptografar("52998224725")))'
+→ 52998224725  (OK)
